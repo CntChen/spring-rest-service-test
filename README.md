@@ -1,7 +1,7 @@
 # spring-rest-service-test
 learning java.
 
-for war and tomcat deployment:
+this branch is for jar, for war and tomcat deployment:
 > https://github.com/CntChen/spring-rest-service-test/tree/war-tomcat
 
 ## environment
