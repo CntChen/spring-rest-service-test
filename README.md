@@ -1,66 +1,50 @@
-# spring-rest-service-test
+# spring-rest-service-test-in-tomcat
 learning java.
+deploy spring boot application to tomcat.
+
+fork form https://github.com/CntChen/spring-rest-service-test
+
+## document
+* howto-traditional-deployment
+> https://docs.spring.io/spring-boot/docs/current/reference/html/howto-traditional-deployment.html
+
+* How to Deploy a WAR File to Tomcat
+> http://www.baeldung.com/tomcat-deploy-war
+
+* Docker and Apache Tomcat
+> http://trimc-devops.blogspot.com/2015/03/running-docker-applications-apache.html
 
 ## environment
+```
+maven 3.5.0
+java 1.8.0_144
+tomcat 9.0 with java 1.8.0_141
+```
+
+**warning:** the java version used by maven to generator war should be match tomcat's java version.
+
+## deployment
+* start tomcat
 ```bash
-$ mvn -v
-Apache Maven 3.5.0 (ff8f5e7444045639af65f6095c62210b5713f426; 2017-04-04T03:39:06+08:00)
-Maven home: /usr/local/Cellar/maven/3.5.0/libexec
-Java version: 9, vendor: Oracle Corporation
-Java home: /Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home
-Default locale: en_CN, platform encoding: UTF-8
-OS name: "mac os x", version: "10.12.6", arch: "x86_64", family: "mac"
+$ git clone https://github.com/CntChen/tomcat-test
+$ cd tomcat-test
+$ docker-compose -f docker-compose.yml up --build --force-recreate
 ```
 
-## start
-* follow document:
-> https://spring.io/guides/gs/rest-service/
-
-* update maven package configulation
-error when run `mvn package`:
-```bash
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-jar-plugin:2.6:jar (default-jar) on project spring-rest-service-test: Execution default-jar of goal org.apache.maven.plugins:maven-jar-plugin:2.6:jar failed: An API incompatibility was encountered while executing org.apache.maven.plugins:maven-jar-plugin:2.6:jar: java.lang.ExceptionInInitializerError: null
+* deploy
+```
+$ mvn tomcat7:deploy
 ```
 
-how to fix this:
-> https://stackoverflow.com/questions/46353477/jdk9-and-maven-jar-plugin
-
-add the following code to `pom.xml` inside `plugins` property:
+* undeploy
 ```
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-jar-plugin</artifactId>
-    <version>3.0.2</version>
-</plugin>
-```
-
-## run
-* package
-```
-$ mvn package
-```
-and `target` folder is genarated.
-
-* run
-```
-$ java -jar /target/spring-rest-service-test-0.1.0.jar
+$ mvn tomcat7:undeploy
 ```
 
 * test
-```
-$ curl localhost:8080/greeting
-{"id":1,"content":"Hello, World!"}%
-```
-
-## add `./mvnw`
-* add
-```
-$ mvn -N io.takari:maven:wrapper
-```
-
-* use
-```
-$ ./mvnw spring-boot:run
+```bash
+$ curl localhost:8080/sprint-rest-service-test/greeting
+{"id":6,"content":"Hello, World!"}%
 ```
 
 ## EOF
