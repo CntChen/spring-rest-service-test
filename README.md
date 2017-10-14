@@ -4,16 +4,6 @@ deploy spring boot application to tomcat.
 
 fork form https://github.com/CntChen/spring-rest-service-test
 
-## document
-* howto-traditional-deployment
-> https://docs.spring.io/spring-boot/docs/current/reference/html/howto-traditional-deployment.html
-
-* How to Deploy a WAR File to Tomcat
-> http://www.baeldung.com/tomcat-deploy-war
-
-* Docker and Apache Tomcat
-> http://trimc-devops.blogspot.com/2015/03/running-docker-applications-apache.html
-
 ## environment
 ```
 maven 3.5.0
@@ -46,5 +36,16 @@ $ mvn tomcat7:undeploy
 $ curl localhost:8080/sprint-rest-service-test/greeting
 {"id":6,"content":"Hello, World!"}%
 ```
+
+## References
+* howto-traditional-deployment
+> https://docs.spring.io/spring-boot/docs/current/reference/html/howto-traditional-deployment.html
+
+* How to Deploy a WAR File to Tomcat
+> http://www.baeldung.com/tomcat-deploy-war
+
+* Docker and Apache Tomcat
+> http://trimc-devops.blogspot.com/2015/03/running-docker-applications-apache.html
+
 
 ## EOF
