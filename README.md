@@ -1,6 +1,9 @@
 # spring-rest-service-test
 learning java.
 
+for war and tomcat deployment:
+> https://github.com/CntChen/spring-rest-service-test/tree/war-tomcat
+
 ## environment
 ```bash
 $ mvn -v
